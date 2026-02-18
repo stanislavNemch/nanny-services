@@ -1,0 +1,64 @@
+import { useEffect, useState } from "react";
+import { ref, onValue, set, remove } from "firebase/database";
+import { database } from "../firebase/firebase";
+import { DB_ROOT } from "../firebase/constants";
+import { useAuth } from "./useAuth";
+
+export const useFavorites = () => {
+    const { currentUser } = useAuth();
+    const [favorites, setFavorites] = useState<string[]>([]); // Array of nanny IDs
+    const [loadingFavorites, setLoadingFavorites] = useState(true);
+
+    useEffect(() => {
+        if (!currentUser) {
+            setFavorites([]);
+            setLoadingFavorites(false);
+            return;
+        }
+
+        const favoritesRef = ref(
+            database,
+            `${DB_ROOT}/nanny-services/users/${currentUser.uid}/favorites`,
+        );
+
+        // Real-time listener
+        const unsubscribe = onValue(
+            favoritesRef,
+            (snapshot) => {
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    // We store as object { [id]: true }, so keys are IDs
+                    setFavorites(Object.keys(data));
+                } else {
+                    setFavorites([]);
+                }
+                setLoadingFavorites(false);
+            },
+            (error) => {
+                console.error("Error fetching favorites:", error);
+                setLoadingFavorites(false);
+            },
+        );
+
+        return () => unsubscribe();
+    }, [currentUser]);
+
+    const toggleFavorite = async (nannyId: string) => {
+        if (!currentUser) {
+            return; // Should be handled by UI
+        }
+
+        const favoriteRef = ref(
+            database,
+            `${DB_ROOT}/nanny-services/users/${currentUser.uid}/favorites/${nannyId}`,
+        );
+
+        if (favorites.includes(nannyId)) {
+            await remove(favoriteRef);
+        } else {
+            await set(favoriteRef, true);
+        }
+    };
+
+    return { favorites, toggleFavorite, loadingFavorites };
+};

@@ -56,7 +56,7 @@
     background-color: var(--color-white);
     border-radius: 14px;
     box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
-    padding: 8px 0; /* Changed from 14px 18px to vertical padding only for options */
+    padding: 8px 0;
     z-index: 100;
     overflow: hidden;
     display: flex;
@@ -69,7 +69,7 @@
     font-size: 16px;
     line-height: 1.25;
     color: var(--color-text);
-    opacity: 0.5; /* Opacity for default state */
+    opacity: 0.5;
     cursor: pointer;
     transition:
         color var(--transition),
@@ -79,7 +79,7 @@
 .option:hover {
     color: var(--color-text);
     opacity: 1;
-    background-color: var(--color-secondary); /* Use theme secondary color */
+    background-color: var(--color-secondary);
 }
 
 .selectedOption {

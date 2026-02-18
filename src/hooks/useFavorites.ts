@@ -21,13 +21,11 @@ export const useFavorites = () => {
             `${DB_ROOT}/nanny-services/users/${currentUser.uid}/favorites`,
         );
 
-        // Real-time listener
         const unsubscribe = onValue(
             favoritesRef,
             (snapshot) => {
                 if (snapshot.exists()) {
                     const data = snapshot.val();
-                    // We store as object { [id]: true }, so keys are IDs
                     setFavorites(Object.keys(data));
                 } else {
                     setFavorites([]);
@@ -45,7 +43,7 @@ export const useFavorites = () => {
 
     const toggleFavorite = async (nannyId: string) => {
         if (!currentUser) {
-            return; // Should be handled by UI
+            return;
         }
 
         const favoriteRef = ref(

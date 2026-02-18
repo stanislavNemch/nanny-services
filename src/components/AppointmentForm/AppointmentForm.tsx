@@ -38,7 +38,6 @@ const schema = yup
 
 type FormData = yup.InferType<typeof schema>;
 
-// Generate time slots (e.g., 09:00 to 18:00 every 30 mins)
 const timeSlots = [
     "09:00",
     "09:30",
@@ -79,7 +78,6 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
 
     const { handleSuccess } = useFormHelpers({ onClose, reset });
 
-    // Pre-fill form with user data if authenticated
     useEffect(() => {
         if (currentUser) {
             if (currentUser.displayName) {
@@ -88,7 +86,6 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
             if (currentUser.email) {
                 setValue("email", currentUser.email);
             }
-            // If phone number is available in auth profile, pre-fill it
             if (currentUser.phoneNumber) {
                 setValue("phone", currentUser.phoneNumber);
             }
@@ -99,7 +96,6 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
     const timeWrapperRef = useRef<HTMLDivElement>(null);
     const selectedTime = watch("time");
 
-    // Click outside to close custom dropdown
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (
@@ -216,10 +212,7 @@ const AppointmentForm: React.FC<AppointmentFormProps> = ({
                                                 handleTimeSelect(time);
                                             }}
                                         >
-                                            {
-                                                // Format time with spaces like mockup "09 : 00"
-                                                time.replace(":", " : ")
-                                            }
+                                            {time.replace(":", " : ")}
                                         </div>
                                     ))}
                                 </div>

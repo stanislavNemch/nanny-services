@@ -22,7 +22,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     useEffect(() => {
         if (isOpen) {
             window.addEventListener("keydown", handleKeyDown);
-            document.body.style.overflow = "hidden"; // Prevent background scrolling
+            document.body.style.overflow = "hidden";
         }
 
         return () => {

@@ -4,7 +4,6 @@
     align-items: center;
     height: 80px;
     position: relative;
-    /* Ensure header stays on top if needed, though modal usually handles highest z-index */
     z-index: 50;
 }
 
@@ -14,7 +13,7 @@
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--color-primary);
-    z-index: 51; /* Keep logo above mobile menu */
+    z-index: 51;
 }
 
 .logo span {
@@ -22,29 +21,28 @@
 }
 
 .burgerButton {
-    display: none; /* Hidden by default on desktop */
+    display: none;
     background: transparent;
     border: none;
     color: var(--color-text);
     cursor: pointer;
-    z-index: 51; /* Keep burger button above mobile menu */
+    z-index: 52;
     padding: 8px;
+    position: relative;
 }
 
-/* Container for nav and auth - Desktop default */
 .menuContainer {
     display: flex;
-    justify-content: flex-end; /* Changed from space-between to flex-end to push Auth right */
+    justify-content: flex-end;
     align-items: center;
     flex-grow: 1;
-    margin-left: 0; /* Removed margin-left */
+    margin-left: 0;
 }
 
 .nav {
     display: flex;
     gap: 40px;
     align-items: center;
-    /* Absolute positioning for perfect centering on Desktop */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -87,13 +85,12 @@
     display: flex;
     gap: 8px;
     align-items: center;
-    /* margin-left: auto; Removed as flex-end handles it */
 }
 
 .loginButton {
     background: transparent;
     border: 1px solid var(--color-text);
-    opacity: 0.5; /* Adjust opacity to match design intent but keep visible */
+    opacity: 0.5;
     border-radius: 30px;
     padding: 14px 39px;
     font-weight: 500;
@@ -185,30 +182,25 @@
     opacity: 1;
 }
 
-/* Home Page Specific Styles */
 .headerHome {
     background-color: transparent;
     border-bottom: 0.5px solid rgba(251, 251, 251, 0.4);
     position: absolute;
-    top: 32px; /* Align with Hero Section top margin */
+    top: 32px;
     left: 0;
     right: 0;
     width: 100%;
     margin: 0;
     z-index: 50;
     height: auto;
-    padding: 30px 96px; /* Top/Bottom 30px, Left/Right 96px */
+    padding: 30px clamp(32px, 6.7vw, 96px);
 }
-
-/* Override standard max-width if needed or ensures it fits `left: 32px; right: 32px` strategy */
-/* If container is 1440px max, and relative. */
-/* left: 32px means 32px from left edge of container. */
 
 .headerHome .nav {
     position: static;
     transform: none;
     left: auto;
-    margin-right: 92px; /* Gap between Nav and Auth */
+    margin-right: clamp(32px, 6.4vw, 92px);
     gap: 40px;
 }
 
@@ -273,36 +265,40 @@
     color: #fff;
 }
 
-/* Tablet & Mobile Styles */
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1024px) {
     .headerHome {
+        position: relative;
         top: 0;
         left: 0;
         right: 0;
-        padding: 0 20px;
-        position: relative; /* On mobile, maybe keep it absolute or revert? */
-        background-color: transparent; /* Or var(--color-primary) if needed */
+        padding: 16px clamp(16px, 3vw, 32px);
+        background-color: var(--color-primary);
+        border-bottom: none;
+        border-radius: 30px 30px 0 0;
     }
 
     .burgerButton {
         display: block;
         margin-left: auto;
     }
-    /* ... existing mobile styles ... */
+
+    .burgerOpen {
+        color: var(--color-text);
+    }
     .menuContainer {
         position: fixed;
         top: 0;
         right: 0;
         width: 100%;
         height: 100vh;
-        background-color: var(--color-background); /* Use theme bg */
+        background-color: var(--color-background);
         flex-direction: column;
         justify-content: center;
         gap: 40px;
         margin-left: 0;
         transform: translateX(100%);
         transition: transform 0.3s ease-in-out;
-        z-index: 50; /* Behind logo/burger */
+        z-index: 50;
         padding: 20px;
     }
 
@@ -315,18 +311,20 @@
         flex-direction: column;
         gap: 32px;
         font-size: 24px;
-        /* Reset absolute positioning for mobile */
         position: static;
         transform: none;
     }
 
     .navLink {
-        font-size: 24px; /* Larger text for mobile touch */
+        font-size: 24px;
     }
 
-    /* Reset Home specific styles for mobile menu content to be readable on white bg */
     .menuContainer .navLinkHome {
         color: var(--color-text);
+    }
+
+    .menuContainer .navLinkHome::after {
+        background-color: var(--color-primary);
     }
 
     .menuContainer .loginButtonHome,
@@ -362,5 +360,19 @@
     .logoutButton {
         width: 100%;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .headerHome {
+        border-radius: 20px 20px 0 0;
+        padding: 14px 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .headerHome {
+        border-radius: 16px 16px 0 0;
+        padding: 12px 12px;
     }
 }

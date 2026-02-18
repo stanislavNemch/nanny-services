@@ -3,17 +3,18 @@
     width: 100%;
     margin-top: 32px;
     margin-bottom: 32px;
-    /* margins removed as Layout handles padding now */
-    min-height: 736px;
+    min-height: clamp(500px, 55vw, 736px);
     position: relative;
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .leftPanel {
     width: 50%;
     min-width: 0;
     background-color: var(--color-primary);
-    padding: 251px 64px 163px 64px;
+    padding: clamp(180px, 18vw, 251px) clamp(24px, 4.5vw, 64px)
+        clamp(60px, 10vw, 163px);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -31,40 +32,41 @@
 
 .title {
     font-weight: 500;
-    font-size: 70px;
+    font-size: clamp(32px, 4.8vw, 70px);
     line-height: 1;
     letter-spacing: -0.03em;
     color: #fbfbfb;
-    margin-bottom: 28px;
+    margin-bottom: clamp(16px, 2vw, 28px);
     max-width: 517px;
 }
 
 .description {
     font-weight: 400;
-    font-size: 28px;
-    line-height: 1.07143;
+    font-size: clamp(16px, 2vw, 28px);
+    line-height: 1.15;
     letter-spacing: -0.02em;
     color: #fbfbfb;
-    margin-bottom: 64px;
+    margin-bottom: clamp(28px, 4.5vw, 64px);
 }
 
 .ctaButton {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 18px;
-    padding: 0; /* Override requested padding to fit content in fixed 230px width */
-    width: 230px;
-    height: 60px;
+    gap: clamp(12px, 1.2vw, 18px);
+    padding: 0;
+    width: clamp(180px, 16vw, 230px);
+    height: clamp(48px, 4.2vw, 60px);
     border: 1px solid rgba(251, 251, 251, 0.4);
     border-radius: 30px;
     font-weight: 500;
-    font-size: 20px;
+    font-size: clamp(16px, 1.4vw, 20px);
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: #ffffff;
     text-decoration: none;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .ctaButton:hover {
@@ -90,7 +92,6 @@
     overflow: hidden;
 }
 
-/* Overlay for the image */
 .rightPanel::after {
     content: "";
     position: absolute;
@@ -104,31 +105,34 @@
 }
 
 .heroImage {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 90% center; /* Shift focus to right to show important info */
-    border-radius: 0; /* Parent handles radius */
+    object-position: 90% center;
+    display: block;
 }
 
 .experienceBadge {
     position: absolute;
-    bottom: 50px;
-    right: 50px;
+    bottom: clamp(20px, 3.5vw, 50px);
+    right: clamp(20px, 3.5vw, 50px);
     background-color: #ffffff;
     border-radius: 20px;
-    padding: 32px;
+    padding: clamp(16px, 2.2vw, 32px);
     display: flex;
     align-items: center;
-    gap: 16px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); /* Approximate shadow */
+    gap: clamp(10px, 1.1vw, 16px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     max-width: 284px;
-    z-index: 2; /* Above overlay */
+    z-index: 2;
 }
 
 .checkIconWrapper {
-    width: 54px;
-    height: 54px;
+    width: clamp(40px, 3.8vw, 54px);
+    height: clamp(40px, 3.8vw, 54px);
     background-color: var(--color-primary);
     border-radius: 13px;
     display: flex;
@@ -146,65 +150,143 @@
 
 .experienceText {
     font-weight: 400;
-    font-size: 16px;
+    font-size: clamp(13px, 1.1vw, 16px);
     color: rgba(17, 16, 16, 0.5);
 }
 
 .experienceCount {
     font-weight: 700;
-    font-size: 24px;
-    color: #111010; /* Force dark text for visibility on white badge in all themes */
+    font-size: clamp(18px, 1.7vw, 24px);
+    color: #111010;
 }
 
-/* Responsive Styles */
 @media screen and (max-width: 1024px) {
-    .title {
-        font-size: 50px;
-    }
-
-    .description {
-        font-size: 24px;
-    }
-
     .heroSection {
         flex-direction: column;
-        height: auto;
+        min-height: calc(100dvh - 80px);
+        margin-top: 0;
+        margin-bottom: 0;
+        border-radius: 0 0 30px 30px;
     }
 
     .leftPanel {
-        padding: 120px 32px 64px 32px;
+        width: 100%;
+        border-radius: 0;
+        padding: clamp(40px, 6vw, 80px) clamp(24px, 4vw, 48px)
+            clamp(40px, 6vw, 64px);
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .contentWrapper {
+        align-items: center;
+        text-align: center;
+    }
+
+    .ctaButton {
+        align-self: center;
     }
 
     .rightPanel {
-        height: 500px;
-        flex: none;
         width: 100%;
+        flex: 1;
+        min-height: 200px;
+        border-radius: 0 0 30px 30px;
     }
 
     .experienceBadge {
-        bottom: 30px;
-        right: 30px;
-        padding: 20px;
+        bottom: clamp(16px, 3vw, 30px);
+        right: clamp(16px, 3vw, 30px);
+        padding: clamp(14px, 2vw, 20px);
     }
 }
 
-@media screen and (max-width: 480px) {
-    .title {
-        font-size: 40px;
-    }
-
-    .description {
-        font-size: 18px;
+@media screen and (max-width: 768px) {
+    .heroSection {
+        margin-bottom: 0;
+        border-radius: 0 0 20px 20px;
     }
 
     .leftPanel {
-        padding: 100px 20px 40px 20px;
+        border-radius: 0;
+        padding: 36px 24px 32px;
+    }
+
+    .rightPanel {
+        min-height: clamp(180px, 30vw, 300px);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .contentWrapper {
+        max-width: 100%;
+    }
+
+    .ctaButton {
+        width: 200px;
+        height: 52px;
+        font-size: 16px;
     }
 
     .experienceBadge {
         right: 50%;
         transform: translateX(50%);
-        width: 90%;
-        bottom: 20px;
+        max-width: 260px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .heroSection {
+        margin-bottom: 0;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .leftPanel {
+        border-radius: 0;
+        padding: 32px 16px 24px;
+    }
+
+    .rightPanel {
+        min-height: clamp(150px, 40vw, 240px);
+        border-radius: 0 0 16px 16px;
+    }
+
+    .title {
+        font-size: clamp(28px, 8vw, 36px);
+    }
+
+    .description {
+        font-size: clamp(14px, 4vw, 18px);
+        margin-bottom: 24px;
+    }
+
+    .ctaButton {
+        width: 100%;
+        max-width: 230px;
+    }
+
+    .experienceBadge {
+        right: 50%;
+        transform: translateX(50%);
+        width: calc(100% - 32px);
+        max-width: 260px;
+        bottom: 16px;
+        padding: 12px;
+        gap: 10px;
+        border-radius: 14px;
+    }
+
+    .checkIconWrapper {
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+    }
+
+    .experienceText {
+        font-size: 12px;
+    }
+
+    .experienceCount {
+        font-size: 16px;
     }
 }

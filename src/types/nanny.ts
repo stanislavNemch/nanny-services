@@ -5,7 +5,7 @@ export interface Review {
 }
 
 export interface Nanny {
-    id: string; // Firebase key
+    id: string;
     name: string;
     avatar_url: string;
     birthday: string;

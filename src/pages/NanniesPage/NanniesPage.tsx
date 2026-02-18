@@ -21,14 +21,12 @@ const NanniesPage = () => {
     const { favorites, toggleFavorite } = useFavorites();
     const { currentUser } = useAuth();
 
-    // Use custom hook for filtering
     const filteredNannies = useNannyFilter(allNannies, filter);
 
     useEffect(() => {
         const fetchNannies = async () => {
             setLoading(true);
             try {
-                // Fetch from isolated app path
                 const rootRef = ref(
                     database,
                     `${DB_ROOT}/nanny-services/nannies`,
@@ -37,7 +35,6 @@ const NanniesPage = () => {
 
                 if (rootSnapshot.exists()) {
                     const data = rootSnapshot.val();
-                    // Normalize data: filter items that look like nannies
                     const list: Nanny[] = Object.keys(data)
                         .map((key) => ({
                             id: key,

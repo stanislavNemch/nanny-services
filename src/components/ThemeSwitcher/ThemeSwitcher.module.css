@@ -1,7 +1,7 @@
 .container {
     position: relative;
     display: flex;
-    flex-direction: column-reverse; /* Expand upwards */
+    flex-direction: column-reverse;
     align-items: center;
     gap: 12px;
 }
@@ -40,7 +40,7 @@
         opacity 0.3s ease,
         transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: absolute;
-    bottom: 60px; /* Position above main button */
+    bottom: 60px;
 }
 
 .options.open {

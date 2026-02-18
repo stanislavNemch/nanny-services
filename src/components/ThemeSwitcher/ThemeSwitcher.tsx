@@ -9,7 +9,7 @@ const themes: { id: Theme; color: string }[] = [
     { id: "red", color: "#f03f3b" },
     { id: "blue", color: "#0957C3" },
     { id: "green", color: "#103931" },
-    { id: "dark", color: "#1e1e1e" }, // Dark theme representative color
+    { id: "dark", color: "#1e1e1e" },
 ];
 
 const ThemeSwitcher = () => {

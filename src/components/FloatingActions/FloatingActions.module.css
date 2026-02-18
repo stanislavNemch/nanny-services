@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 16px;
     align-items: center;
-    z-index: 900; /* High z-index to stay above content */
+    z-index: 900;
 }
 
 @media screen and (max-width: 768px) {

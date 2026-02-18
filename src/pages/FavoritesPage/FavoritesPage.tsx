@@ -50,13 +50,10 @@ const FavoritesPage = () => {
         fetchNannies();
     }, []);
 
-    // Filter only favorites first
     const favoriteNannies = useMemo(() => {
         if (!favorites || favorites.length === 0) return [];
         return allNannies.filter((n) => favorites.includes(n.id));
     }, [allNannies, favorites]);
-
-    // Apply sorting filters to the favorites list using custom hook
     const filteredFavorites = useNannyFilter(favoriteNannies, filter);
 
     const visibleNannies = filteredFavorites.slice(0, visibleCount);

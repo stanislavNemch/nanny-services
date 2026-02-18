@@ -1,11 +1,15 @@
 .container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 0 32px; /* Desktop padding adjusted to 32px */
+    padding: 0 32px;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    position: relative; /* Enable absolute positioning for Header */
+    position: relative;
+}
+
+.container main {
+    flex: 1;
 }
 
 @media screen and (max-width: 1024px) {
@@ -17,5 +21,11 @@
 @media screen and (max-width: 768px) {
     .container {
         padding: 0 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        padding: 0 12px;
     }
 }

@@ -11,12 +11,11 @@
     box-sizing: border-box;
 }
 
-/* Default Theme (Red) */
 :root,
 [data-theme="red"] {
     --color-primary: #f03f3b;
     --color-primary-hover: #d32f2f;
-    --color-secondary: #f3f3f3; /* Neutral background for secondary elements */
+    --color-secondary: #f3f3f3;
     --color-text: #111010;
     --color-background: #f3f3f3;
     --color-white: #ffffff;
@@ -25,7 +24,7 @@
 
 [data-theme="blue"] {
     --color-primary: #0957c3;
-    --color-primary-hover: #0746a0; /* Calculated darker */
+    --color-primary-hover: #0746a0;
     --color-secondary: #e0e9ff;
     --color-text: #191a15;
     --color-background: #f3f3f3;
@@ -34,26 +33,21 @@
 
 [data-theme="green"] {
     --color-primary: #103931;
-    --color-primary-hover: #0c2d27; /* Calculated darker */
-    --color-secondary: #e6f0ed; /* Adjusted secondary for green */
+    --color-primary-hover: #0c2d27;
+    --color-secondary: #e6f0ed;
     --color-text: #191a15;
     --color-background: #f3f3f3;
     --color-white: #ffffff;
 }
 
 [data-theme="dark"] {
-    --color-primary: #54be96; /* Keep green or choose another accent for dark */
+    --color-primary: #54be96;
     --color-primary-hover: #36a583;
     --color-secondary: #2a2a2a;
-    --color-text: #f3f3f3; /* Light text */
-    --color-background: #121212; /* Dark background */
-    --color-white: #1e1e1e; /* Darker component bg */
-    --color-border: rgba(
-        243,
-        243,
-        243,
-        0.5
-    ); /* Higher opacity for visibility */
+    --color-text: #f3f3f3;
+    --color-background: #121212;
+    --color-white: #1e1e1e;
+    --color-border: rgba(243, 243, 243, 0.5);
 }
 
 body {

@@ -45,6 +45,7 @@ const Header = () => {
                 <button
                     className={clsx(styles.burgerButton, {
                         [styles.burgerButtonHome]: isHome,
+                        [styles.burgerOpen]: isMobileMenuOpen,
                     })}
                     onClick={toggleMobileMenu}
                     aria-label="Toggle menu"

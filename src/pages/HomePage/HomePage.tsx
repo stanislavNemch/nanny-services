@@ -25,15 +25,12 @@ const HomePage = () => {
             </div>
 
             <div className={styles.rightPanel}>
-                {/* Image is set as background in CSS or img tag if preferred for access extraction, 
-                    but design looks like cover. Let's use img for accessibility but styled to cover. */}
                 <img
                     src={heroImage}
                     alt="Nanny with child"
                     className={styles.heroImage}
                 />
 
-                {/* Experience Badge - Bottom Right */}
                 <div className={styles.experienceBadge}>
                     <div className={styles.checkIconWrapper}>
                         <FaCheck size={20} />

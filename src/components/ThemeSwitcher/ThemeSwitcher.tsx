@@ -3,18 +3,18 @@ import { FaPalette, FaCheck } from "react-icons/fa";
 import styles from "./ThemeSwitcher.module.css";
 import clsx from "clsx";
 
-type Theme = "green" | "blue" | "orange" | "dark";
+type Theme = "red" | "blue" | "green" | "dark";
 
 const themes: { id: Theme; color: string }[] = [
-    { id: "green", color: "#54be96" },
-    { id: "blue", color: "#3470ff" },
-    { id: "orange", color: "#f39c12" },
+    { id: "red", color: "#f03f3b" },
+    { id: "blue", color: "#0957C3" },
+    { id: "green", color: "#103931" },
     { id: "dark", color: "#1e1e1e" }, // Dark theme representative color
 ];
 
 const ThemeSwitcher = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const [currentTheme, setCurrentTheme] = useState<Theme>("green");
+    const [currentTheme, setCurrentTheme] = useState<Theme>("red");
 
     useEffect(() => {
         const savedTheme = localStorage.getItem("app-theme") as Theme;

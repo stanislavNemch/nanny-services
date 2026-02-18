@@ -153,7 +153,7 @@
 .experienceCount {
     font-weight: 700;
     font-size: 24px;
-    color: var(--color-text);
+    color: #111010; /* Force dark text for visibility on white badge in all themes */
 }
 
 /* Responsive Styles */

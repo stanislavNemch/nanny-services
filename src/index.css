@@ -24,18 +24,18 @@
 }
 
 [data-theme="blue"] {
-    --color-primary: #3470ff;
-    --color-primary-hover: #2b5ac7;
+    --color-primary: #0957c3;
+    --color-primary-hover: #0746a0; /* Calculated darker */
     --color-secondary: #e0e9ff;
     --color-text: #191a15;
     --color-background: #f3f3f3;
     --color-white: #ffffff;
 }
 
-[data-theme="orange"] {
-    --color-primary: #f39c12;
-    --color-primary-hover: #d68910;
-    --color-secondary: #fef5e6;
+[data-theme="green"] {
+    --color-primary: #103931;
+    --color-primary-hover: #0c2d27; /* Calculated darker */
+    --color-secondary: #e6f0ed; /* Adjusted secondary for green */
     --color-text: #191a15;
     --color-background: #f3f3f3;
     --color-white: #ffffff;
